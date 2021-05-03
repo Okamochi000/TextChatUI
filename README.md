@@ -3,7 +3,7 @@ LINE風のテキストチャットUIサンプル
 
 
 https://user-images.githubusercontent.com/49199105/116881451-3b7ec880-ac5e-11eb-80e4-e06c8eef56b3.mp4
-<br>
+
 (動画はiPhoneSEで撮影した画面です)
 
 このプロジェクトは下記の機能を組み込んでいます。<br>
