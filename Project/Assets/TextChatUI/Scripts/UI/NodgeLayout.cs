@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// ノッジレイアウト
 /// </summary>
 [ExecuteInEditMode]
-public class NodgeLayout : MonoBehaviour
+public class NodgeLayout : UIBehaviour
 {
     [System.Serializable]
     private enum LayoutType
@@ -16,29 +17,6 @@ public class NodgeLayout : MonoBehaviour
 
     [SerializeField] private LayoutType type = LayoutType.Header;
     [SerializeField] private RectTransform nodge = null;
-    [SerializeField] private bool isPreview = false;
-
-    private Vector2 screenSize_ = new Vector2();
-
-    void Awake()
-    {
-        screenSize_ = Vector2.zero;
-        UpdateNodge();
-        if (!Application.isEditor) { this.enabled = false; }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isPreview && !Application.isPlaying) { return; }
-
-        if (screenSize_.x != Screen.currentResolution.width || screenSize_.y != Screen.currentResolution.height)
-        {
-            screenSize_.x = Screen.currentResolution.width;
-            screenSize_.y = Screen.currentResolution.height;
-            UpdateNodge();
-        }
-    }
 
     /// <summary>
     /// ノッジを更新する
@@ -62,6 +40,16 @@ public class NodgeLayout : MonoBehaviour
             layoutGroup.CalculateLayoutInputVertical();
             this.GetComponent<ContentSizeFitter>().SetLayoutVertical();
         }
+    }
+
+    protected override void Awake()
+    {
+        UpdateNodge();
+    }
+
+    protected override void OnRectTransformDimensionsChange()
+    {
+        UpdateNodge();
     }
 
     /// <summary>

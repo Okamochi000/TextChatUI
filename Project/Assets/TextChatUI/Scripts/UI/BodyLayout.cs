@@ -13,29 +13,34 @@ public class BodyLayout : MonoBehaviour
     [SerializeField] private RectTransform footer = null;
     [SerializeField] private bool isHeaderNodgeOnly = false;
     [SerializeField] private bool isFooterNodgeOnly = false;
-    [SerializeField] private bool isPreview = false;
 
     private RectTransform selfRectTransform_ = null;
     private Vector2 screenSize_ = new Vector2();
+    private Vector2 prevHeader_ = Vector2.zero;
+    private Vector2 prevFooter_ = Vector2.zero;
 
     void Start()
     {
-        screenSize_ = Vector2.zero;
         UpdateNodge();
-        if (!Application.isEditor) { this.enabled = false; }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isPreview && !Application.isPlaying) { return; }
-
-        if (screenSize_.x != Screen.currentResolution.width || screenSize_.y != Screen.currentResolution.height)
+        // 更新チェック
+        if (screenSize_.x == Screen.currentResolution.width && screenSize_.y == Screen.currentResolution.height)
         {
-            screenSize_.x = Screen.currentResolution.width;
-            screenSize_.y = Screen.currentResolution.height;
-            UpdateNodge();
+            if (header == null || prevHeader_ == header.rect.size)
+            {
+                if (footer == null || prevFooter_ == footer.rect.size)
+                {
+                    return;
+                }
+            }
         }
+
+        // 更新
+        UpdateNodge();
     }
 
     /// <summary>
@@ -85,6 +90,13 @@ public class BodyLayout : MonoBehaviour
                 selfRectTransform_.offsetMin = new Vector2(0, footer.sizeDelta.y);
             }
         }
+
+        screenSize_.x = Screen.currentResolution.width;
+        screenSize_.y = Screen.currentResolution.height;
+        if (header == null) { prevHeader_ = Vector2.zero; }
+        else { prevHeader_ = header.rect.size; }
+        if (footer == null) { prevFooter_ = Vector2.zero; }
+        else { prevFooter_ = footer.rect.size; }
     }
 
     /// <summary>
@@ -98,5 +110,13 @@ public class BodyLayout : MonoBehaviour
         CanvasScaler canvas = transform.parent.GetComponent<CanvasScaler>();
         if (canvas == null) { return GetParentCanvasScaler(this.transform.parent); }
         else { return canvas; }
+    }
+
+    /// <summary>
+    /// インスペクター変更検知
+    /// </summary>
+    private void OnValidate()
+    {
+        UpdateNodge();
     }
 }
