@@ -1,5 +1,5 @@
 # TextChatUI
-LINE風のテキストチャットUIサンプル
+【Unity】LINE風のテキストチャットUIサンプル
 
 
 https://user-images.githubusercontent.com/49199105/116881451-3b7ec880-ac5e-11eb-80e4-e06c8eef56b3.mp4
