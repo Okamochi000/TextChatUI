@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒmƒbƒWƒŒƒCƒAƒEƒg
+/// ãƒãƒƒã‚¸ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ
 /// </summary>
 [ExecuteInEditMode]
 public class BodyLayout : MonoBehaviour
@@ -27,7 +27,7 @@ public class BodyLayout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // XVƒ`ƒFƒbƒN
+        // æ›´æ–°ãƒã‚§ãƒƒã‚¯
         if (screenSize_.x == Screen.currentResolution.width && screenSize_.y == Screen.currentResolution.height)
         {
             if (header == null || prevHeader_ == header.rect.size)
@@ -39,12 +39,12 @@ public class BodyLayout : MonoBehaviour
             }
         }
 
-        // XV
+        // æ›´æ–°
         UpdateNodge();
     }
 
     /// <summary>
-    /// ƒmƒbƒW‚ğXV‚·‚é
+    /// ãƒãƒƒã‚¸ã‚’æ›´æ–°ã™ã‚‹
     /// </summary>
     private void UpdateNodge()
     {
@@ -56,12 +56,12 @@ public class BodyLayout : MonoBehaviour
         selfRectTransform_.offsetMin = Vector2.zero;
         selfRectTransform_.offsetMax = Vector2.zero;
 
-        // ƒXƒP[ƒŠƒ“ƒO
+        // ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°
         float scale = 1.0f;
         CanvasScaler scaler = GetParentCanvasScaler(this.transform);
         if (scaler != null && scaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize) { scale = scaler.referenceResolution.y / resolition.height; }
 
-        // ƒwƒbƒ_[İ’è
+        // ãƒ˜ãƒƒãƒ€ãƒ¼è¨­å®š
         if (isHeaderNodgeOnly)
         {
             selfRectTransform_.offsetMax = new Vector2(0, (area.yMax - resolition.height) * scale);
@@ -76,7 +76,7 @@ public class BodyLayout : MonoBehaviour
             }
         }
 
-        // ƒtƒbƒ^[İ’è
+        // ãƒ•ãƒƒã‚¿ãƒ¼è¨­å®š
         if (isFooterNodgeOnly)
         {
             selfRectTransform_.offsetMin = new Vector2(0, area.yMin * scale);
@@ -100,7 +100,7 @@ public class BodyLayout : MonoBehaviour
     }
 
     /// <summary>
-    /// eƒLƒƒƒ“ƒoƒX‚ğæ“¾‚·‚é
+    /// è¦ªã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     private CanvasScaler GetParentCanvasScaler(Transform transform)
@@ -113,7 +113,7 @@ public class BodyLayout : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒCƒ“ƒXƒyƒNƒ^[•ÏXŒŸ’m
+    /// ã‚¤ãƒ³ã‚¹ãƒšã‚¯ã‚¿ãƒ¼å¤‰æ›´æ¤œçŸ¥
     /// </summary>
     private void OnValidate()
     {

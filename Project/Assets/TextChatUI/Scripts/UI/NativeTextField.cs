@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +7,7 @@ using System;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ƒlƒCƒeƒBƒu‚ÌƒeƒLƒXƒgƒtƒB[ƒ‹ƒh
+/// ãƒã‚¤ãƒ†ã‚£ãƒ–ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
 /// </summary>
 public class NativeTextField : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class NativeTextField : MonoBehaviour
 
     void Start()
     {
-        // ‰Šúİ’è
+        // åˆæœŸè¨­å®š
         Initialize();
     }
 
@@ -61,7 +61,7 @@ public class NativeTextField : MonoBehaviour
     {
         if (!IsNative() || !IsInitialize) { return; }
 
-        // ƒ‚ƒoƒCƒ‹ƒL[ƒ{[ƒh‚ªŠJ•Â‚³‚ê‚½‚Æ‚«ƒeƒLƒXƒg‚ğXV‚·‚é
+        // ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ãŒé–‹é–‰ã•ã‚ŒãŸã¨ããƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹
         bool isKeyboardOpen = IsShowKeyboard();
         if (isKeyboardOpen != isPrevShow_)
         {
@@ -71,7 +71,7 @@ public class NativeTextField : MonoBehaviour
             isPrevShow_ = isKeyboardOpen;
         }
 
-        // s”‚ª‘‚¦‚½‚Æ‚«ƒeƒLƒXƒg‚ğXV‚·‚é
+        // è¡Œæ•°ãŒå¢—ãˆãŸã¨ããƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹
         if (isKeyboardOpen)
         {
             float currentHeight = GetTextViewHeight();
@@ -82,7 +82,7 @@ public class NativeTextField : MonoBehaviour
             }
         }
 
-        // ˆÊ’u‚ª•Ï‚í‚Á‚½‚à‚µ‚­‚ÍƒTƒCƒY‚ª•Ï‚í‚Á‚½‚Æ‚«ƒeƒLƒXƒg‚ğXV‚·‚é
+        // ä½ç½®ãŒå¤‰ã‚ã£ãŸã‚‚ã—ãã¯ã‚µã‚¤ã‚ºãŒå¤‰ã‚ã£ãŸã¨ããƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹
         Vector2 globalSize = nativeTextArea.rect.size * nativeTextArea.lossyScale * viewScale_;
         if (prevSizeDelta_ != globalSize || prevPosition_ != (Vector2)unityTextArea.position)
         {
@@ -122,34 +122,34 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ‰Šúİ’è
+    /// åˆæœŸè¨­å®š
     /// </summary>
     public void Initialize()
     {
         if (IsInitialize) { return; }
 
-        // ƒeƒLƒXƒg•\¦
+        // ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
         defaultInputField.gameObject.SetActive(!IsNative());
         unityTextArea.gameObject.SetActive(IsNative());
 
-        // ƒeƒLƒXƒg‚ğƒŠƒZƒbƒg‚·‚é
+        // ãƒ†ã‚­ã‚¹ãƒˆã‚’ãƒªã‚»ãƒƒãƒˆã™ã‚‹
         defaultInputField.text = "";
         unityTextAreaText.text = "";
         ClearTextViewText();
 
-        // ƒ{ƒ^ƒ“ƒR[ƒ‹ƒoƒbƒNİ’è
+        // ãƒœã‚¿ãƒ³ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯è¨­å®š
         nativeOpenButton.onClick.AddListener(BecomeFirstResponderTextView);
 
-        // ƒrƒ…[ƒTƒCƒY‚ğİ’è‚·‚é
+        // ãƒ“ãƒ¥ãƒ¼ã‚µã‚¤ã‚ºã‚’è¨­å®šã™ã‚‹
         viewSize_.x = GetViewWidth();
         viewSize_.y = GetViewHeight();
         viewScale_.x = viewSize_.x / Screen.width;
         viewScale_.y = viewSize_.y / Screen.height;
 
-        // “ü—Í—“‚ğì¬‚·‚é
+        // å…¥åŠ›æ¬„ã‚’ä½œæˆã™ã‚‹
         CreateTextView();
 
-        // IOSƒlƒCƒeƒBƒuƒL[ƒ{[ƒhg—pİ’è
+        // IOSãƒã‚¤ãƒ†ã‚£ãƒ–ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ä½¿ç”¨è¨­å®š
         if (IsNative())
         {
             if (!Application.isEditor && Application.platform == RuntimePlatform.IPhonePlayer)
@@ -158,19 +158,19 @@ public class NativeTextField : MonoBehaviour
             }
         }
 
-        // ƒtƒHƒ“ƒgİ’è
+        // ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
         if (IsNative()) { SetTextViewFont(unityTextAreaText.fontSize, unityTextAreaText.color); }
         else { SetTextViewFont(defaultInputField.textComponent.fontSize, defaultInputField.textComponent.color); }
 
-        // “ü—Í—“‚ğ‰B‚·
+        // å…¥åŠ›æ¬„ã‚’éš ã™
         HideTextView();
 
-        // Š®—¹ƒtƒ‰ƒOØ‘Ö
+        // å®Œäº†ãƒ•ãƒ©ã‚°åˆ‡æ›¿
         IsInitialize = true;
     }
 
     /// <summary>
-    /// ƒlƒCƒeƒBƒu‚ğg—p‚·‚é‚©
+    /// ãƒã‚¤ãƒ†ã‚£ãƒ–ã‚’ä½¿ç”¨ã™ã‚‹ã‹
     /// </summary>
     /// <returns></returns>
     public bool IsNative()
@@ -188,7 +188,7 @@ public class NativeTextField : MonoBehaviour
     #region Native
 
     /// <summary>
-    /// ƒeƒLƒXƒgƒrƒ…[ì¬
+    /// ãƒ†ã‚­ã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼ä½œæˆ
     /// </summary>
     public void CreateTextView()
     {
@@ -201,7 +201,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒgƒrƒ…[XV
+    /// ãƒ†ã‚­ã‚¹ãƒˆãƒ“ãƒ¥ãƒ¼æ›´æ–°
     /// </summary>
     public void UpdateTextView()
     {
@@ -219,11 +219,11 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒgíœ
+    /// ãƒ†ã‚­ã‚¹ãƒˆå‰Šé™¤
     /// </summary>
     public void ClearTextViewText()
     {
-        // Unityã‚ÌƒeƒLƒXƒgíœ
+        // Unityä¸Šã®ãƒ†ã‚­ã‚¹ãƒˆå‰Šé™¤
         defaultInputField.text = "";
         unityTextAreaText.text = "";
 
@@ -236,7 +236,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒg‚ğXV‚·‚é
+    /// ãƒ†ã‚­ã‚¹ãƒˆã‚’æ›´æ–°ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     public string UpdateTextViewText()
@@ -278,9 +278,9 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒg‚Ì•¶š”‚ğæ“¾‚·‚é
+    /// ãƒ†ã‚­ã‚¹ãƒˆã®æ–‡å­—æ•°ã‚’å–å¾—ã™ã‚‹
     /// </summary>
-    /// <param name="isSpaceOmit">‹ó”’‚Ì‚İ‚Ìó‘Ô‚ğƒJƒEƒ“ƒg‚ÉŠÜ‚ß‚é‚©</param>
+    /// <param name="isSpaceOmit">ç©ºç™½ã®ã¿ã®çŠ¶æ…‹ã‚’ã‚«ã‚¦ãƒ³ãƒˆã«å«ã‚ã‚‹ã‹</param>
     /// <returns></returns>
     public int GetTextViewTextCount(bool isSpaceOmit)
     {
@@ -292,7 +292,7 @@ public class NativeTextField : MonoBehaviour
                 string replaceText = defaultInputField.text;
                 replaceText = replaceText.Replace("\n", "");
                 replaceText = replaceText.Replace(" ", "");
-                replaceText = replaceText.Replace("@", "");
+                replaceText = replaceText.Replace("ã€€", "");
                 if (replaceText.Length != 0) { return defaultInputField.text.Length; }
                 else { return 0; }
             }
@@ -313,7 +313,7 @@ public class NativeTextField : MonoBehaviour
             string replaceText = unityTextAreaText.text;
             replaceText = replaceText.Replace("\n", "");
             replaceText = replaceText.Replace(" ", "");
-            replaceText = replaceText.Replace("@", "");
+            replaceText = replaceText.Replace("ã€€", "");
             if (replaceText.Length != 0) { return unityTextAreaText.text.Length; }
             else { return 0; }
         }
@@ -322,7 +322,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒeƒLƒXƒg‚ÌƒoƒCƒg”‚ğæ“¾‚·‚é
+    /// ãƒ†ã‚­ã‚¹ãƒˆã®ãƒã‚¤ãƒˆæ•°ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     public int GetTextViewTextByteCount()
@@ -343,7 +343,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ‚‚³‚ğæ“¾‚·‚é
+    /// é«˜ã•ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     public float GetTextViewHeight()
@@ -361,13 +361,13 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒtƒHƒ“ƒgİ’è
+    /// ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
     /// </summary>
     /// <param name="size"></param>
     /// <param name="color"></param>
     public void SetTextViewFont(int size, Color color)
     {
-        // Unityã‚ÌƒeƒLƒXƒgƒtƒHƒ“ƒgİ’è
+        // Unityä¸Šã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
         color.a = defaultInputField.textComponent.color.a;
         defaultInputField.textComponent.color = color;
         defaultInputField.textComponent.fontSize = size;
@@ -375,7 +375,7 @@ public class NativeTextField : MonoBehaviour
         unityTextAreaText.color = color;
         unityTextAreaText.fontSize = size;
 
-        // ƒlƒCƒeƒBƒu‚ÌƒeƒLƒXƒgƒtƒHƒ“ƒgİ’è
+        // ãƒã‚¤ãƒ†ã‚£ãƒ–ã®ãƒ†ã‚­ã‚¹ãƒˆãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
         if (!IsNative()) { return; }
         float nativeFontSize = (float)size;
         if (viewScale_ != Vector2.zero)
@@ -393,18 +393,18 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒlƒCƒeƒBƒuƒeƒLƒXƒg‚ğŠJ‚­
+    /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ†ã‚­ã‚¹ãƒˆã‚’é–‹ã
     /// </summary>
     public void ShowTextView()
     {
         if (!IsNative()) { return; }
 
-        // “§–¾Fİ’è
+        // é€æ˜è‰²è¨­å®š
         Color color = unityTextAreaText.color;
         color.a = 0.0f;
         unityTextAreaText.color = color;
 
-        // ŠJ‚­ƒ{ƒ^ƒ“•\¦
+        // é–‹ããƒœã‚¿ãƒ³è¡¨ç¤º
         nativeOpenButton.gameObject.SetActive(false);
 
 #if !UNITY_EDITOR && UNITY_IOS
@@ -414,18 +414,18 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒlƒCƒeƒBƒuƒeƒLƒXƒg‚ğ‰B‚·
+    /// ãƒã‚¤ãƒ†ã‚£ãƒ–ãƒ†ã‚­ã‚¹ãƒˆã‚’éš ã™
     /// </summary>
     public void HideTextView()
     {
         if (!IsNative()) { return; }
 
-        // “§–¾Fİ’è
+        // é€æ˜è‰²è¨­å®š
         Color color = unityTextAreaText.color;
         color.a = 1.0f;
         unityTextAreaText.color = color;
 
-        // ŠJ‚­ƒ{ƒ^ƒ“•\¦
+        // é–‹ããƒœã‚¿ãƒ³è¡¨ç¤º
         nativeOpenButton.gameObject.SetActive(true);
 
 #if !UNITY_EDITOR && UNITY_IOS
@@ -435,13 +435,13 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒ‚ƒoƒCƒ‹ƒL[ƒ{[ƒh‚ğŠJ‚­
+    /// ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‚’é–‹ã
     /// </summary>
     public void BecomeFirstResponderTextView()
     {
         if (!IsNative()) { return; }
 
-        // •Â‚¶‚Ä‚¢‚éê‡‚ÍŠJ‚­
+        // é–‰ã˜ã¦ã„ã‚‹å ´åˆã¯é–‹ã
         ShowTextView();
 
 #if !UNITY_EDITOR && UNITY_IOS
@@ -451,7 +451,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒ‚ƒoƒCƒ‹ƒL[ƒ{[ƒh‚ğ•Â‚¶‚é
+    /// ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‚’é–‰ã˜ã‚‹
     /// </summary>
     public void ResignFirstResponderTextView()
     {
@@ -461,7 +461,7 @@ public class NativeTextField : MonoBehaviour
             return;
         }
 
-        // ŠJ‚¢‚Ä‚¢‚éê‡‚Í•Â‚¶‚é
+        // é–‹ã„ã¦ã„ã‚‹å ´åˆã¯é–‰ã˜ã‚‹
         HideTextView();
 
 #if !UNITY_EDITOR && UNITY_IOS
@@ -471,7 +471,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒrƒ…[‚Ì‚‚³‚ğæ“¾‚·‚é
+    /// ãƒ“ãƒ¥ãƒ¼ã®é«˜ã•ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     public float GetViewHeight()
     {
@@ -485,7 +485,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒrƒ…[‚Ì‰¡•‚ğæ“¾‚·‚é
+    /// ãƒ“ãƒ¥ãƒ¼ã®æ¨ªå¹…ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     public float GetViewWidth()
     {
@@ -499,7 +499,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒL[ƒ{[ƒh‚Ì‚‚³‚ğæ“¾‚·‚é
+    /// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã®é«˜ã•ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     public float GetKeyboardHeight()
@@ -515,7 +515,7 @@ public class NativeTextField : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒL[ƒ{[ƒh‚Ì•\¦ó‘Ô‚ğæ“¾‚·‚é
+    /// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã®è¡¨ç¤ºçŠ¶æ…‹ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     public bool IsShowKeyboard()

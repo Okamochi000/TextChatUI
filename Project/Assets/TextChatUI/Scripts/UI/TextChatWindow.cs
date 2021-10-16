@@ -1,20 +1,20 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒeƒLƒXƒgƒ`ƒƒƒbƒgƒEƒBƒ“ƒhƒE
+/// ãƒ†ã‚­ã‚¹ãƒˆãƒãƒ£ãƒƒãƒˆã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 /// </summary>
 public class TextChatWindow : MonoBehaviour
 {
     /// <summary>
-    /// ƒRƒƒ“ƒg‚Ìí—Ş
+    /// ã‚³ãƒ¡ãƒ³ãƒˆã®ç¨®é¡
     /// </summary>
     public enum CommentType
     {
-        Mine,       // ©g
-        Opponent    // ‘Šè
+        Mine,       // è‡ªèº«
+        Opponent    // ç›¸æ‰‹
     }
 
     [SerializeField] private GameObject myComment = null;
@@ -38,21 +38,21 @@ public class TextChatWindow : MonoBehaviour
         scrollRectTransform_ = scrollRect.GetComponent<RectTransform>();
         minFieldSize_ = inputFieldRectTransform_.rect.height;
 
-        // ƒ{ƒ^ƒ“ƒR[ƒ‹ƒoƒbƒN
+        // ãƒœã‚¿ãƒ³ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯
         sendButton.onClick.AddListener(OnSendMessage);
         closeKeyboardButton.onClick.AddListener(OnCloseKeyboard);
     }
 
     void Update()
     {
-        // ƒ{ƒ^ƒ“‚Ì—LŒøó‘Ô•ÏX
+        // ãƒœã‚¿ãƒ³ã®æœ‰åŠ¹çŠ¶æ…‹å¤‰æ›´
         if (inputField.GetTextViewTextCount(true) == 0) { sendButton.interactable = false; }
         else { sendButton.interactable = true; }
 
-        // ƒL[ƒ{[ƒh‚ğ•Â‚¶‚éƒ{ƒ^ƒ“‚Ì•\¦Ø‘Ö
+        // ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‚’é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã®è¡¨ç¤ºåˆ‡æ›¿
         closeKeyboardButton.gameObject.SetActive(inputField.IsShowKeyboard());
 
-        // “ü—Í—“‚ÌŠgk
+        // å…¥åŠ›æ¬„ã®æ‹¡ç¸®
         float textViewHeight = inputField.GetTextViewHeight();
         if (!inputField.IsNative())
         {
@@ -65,10 +65,10 @@ public class TextChatWindow : MonoBehaviour
         sizeDelta.y = Mathf.Max(sizeDelta.y, minFieldSize_);
         inputFieldRectTransform_.sizeDelta = sizeDelta;
 
-        // ƒ‚ƒoƒCƒ‹ƒL[ƒ{[ƒh‚Ì‚‚³‚É‡‚í‚¹‚é(”ñ‘Î‰‚Ìê‡‚ÍˆÊ’uŒÅ’è)
+        // ãƒ¢ãƒã‚¤ãƒ«ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã®é«˜ã•ã«åˆã‚ã›ã‚‹(éå¯¾å¿œã®å ´åˆã¯ä½ç½®å›ºå®š)
         if (inputField.IsNative())
         {
-            // “ü—Í—“‚Ì‚‚³‚ğ‡‚í‚¹‚é
+            // å…¥åŠ›æ¬„ã®é«˜ã•ã‚’åˆã‚ã›ã‚‹
             Vector2 offsetMin = selfRectTransform_.offsetMin;
             if (inputField.IsShowKeyboard()) { offsetMin.y = inputField.GetKeyboardHeight() / this.transform.lossyScale.y; }
             else { offsetMin.y = 0.0f; }
@@ -79,13 +79,13 @@ public class TextChatWindow : MonoBehaviour
                 selfRectTransform_.offsetMin = offsetMin;
                 scrollRect.enabled = true;
             }
-            // ”wŒi‚Ì‚‚³‚ğ‡‚í‚¹‚é
+            // èƒŒæ™¯ã®é«˜ã•ã‚’åˆã‚ã›ã‚‹
             Vector2 offsetMax = backgroundRectTransform.offsetMax;
             offsetMax.y = selfRectTransform_.offsetMin.y;
             backgroundRectTransform.offsetMax = offsetMax;
         }
 
-        // ƒXƒNƒ[ƒ‹ƒrƒ…[‚Ì‚‚³’²®
+        // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒ“ãƒ¥ãƒ¼ã®é«˜ã•èª¿æ•´
         {
             Vector2 offsetMin = scrollRectTransform_.offsetMin;
             offsetMin.y = inputFieldRectTransform_.rect.size.y;
@@ -94,7 +94,7 @@ public class TextChatWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒRƒƒ“ƒg‚ğ’Ç‰Á
+    /// ã‚³ãƒ¡ãƒ³ãƒˆã‚’è¿½åŠ 
     /// </summary>
     /// <param name="commentType"></param>
     /// <param name="message"></param>
@@ -116,7 +116,7 @@ public class TextChatWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒƒbƒZ[ƒW‚ğ‘—M‚·‚é
+    /// ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’é€ä¿¡ã™ã‚‹
     /// </summary>
     public void OnSendMessage()
     {
@@ -129,7 +129,7 @@ public class TextChatWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// ƒL[ƒ{[ƒh‚ğ•Â‚¶‚é
+    /// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã‚’é–‰ã˜ã‚‹
     /// </summary>
     public void OnCloseKeyboard()
     {

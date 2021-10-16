@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ‰Šúİ’è
+/// åˆæœŸè¨­å®š
 /// </summary>
 public class Boot
 {
@@ -36,7 +36,7 @@ public class Boot
     {
         Show();
         Screen.fullScreen = false;
-        // ƒXƒe[ƒ^ƒXƒo[‚Æƒz[ƒ€ƒo[‚ğ•\¦‚·‚éê‡‚ÍƒZ[ƒtƒGƒŠƒAŠî€‚É‚·‚é
+        // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ¼ã¨ãƒ›ãƒ¼ãƒ ãƒãƒ¼ã‚’è¡¨ç¤ºã™ã‚‹å ´åˆã¯ã‚»ãƒ¼ãƒ•ã‚¨ãƒªã‚¢åŸºæº–ã«ã™ã‚‹
         UniSoftwareKeyboardArea.SoftwareKeyboardArea.IsSafeArea = true;
     }
 

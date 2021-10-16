@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// ƒmƒbƒWƒŒƒCƒAƒEƒg
+/// ãƒãƒƒã‚¸ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ
 /// </summary>
 [ExecuteInEditMode]
 public class NodgeLayout : UIBehaviour
@@ -11,15 +11,15 @@ public class NodgeLayout : UIBehaviour
     [System.Serializable]
     private enum LayoutType
     {
-        Header,     // ƒwƒbƒ_[
-        Footer,     // ƒtƒbƒ^[
+        Header,     // ãƒ˜ãƒƒãƒ€ãƒ¼
+        Footer,     // ãƒ•ãƒƒã‚¿ãƒ¼
     }
 
     [SerializeField] private LayoutType type = LayoutType.Header;
     [SerializeField] private RectTransform nodge = null;
 
     /// <summary>
-    /// ƒmƒbƒW‚ğXV‚·‚é
+    /// ãƒãƒƒã‚¸ã‚’æ›´æ–°ã™ã‚‹
     /// </summary>
     public void UpdateNodge()
     {
@@ -53,7 +53,7 @@ public class NodgeLayout : UIBehaviour
     }
 
     /// <summary>
-    /// eƒLƒƒƒ“ƒoƒX‚ğæ“¾‚·‚é
+    /// è¦ªã‚­ãƒ£ãƒ³ãƒã‚¹ã‚’å–å¾—ã™ã‚‹
     /// </summary>
     /// <returns></returns>
     private CanvasScaler GetParentCanvasScaler(Transform transform)

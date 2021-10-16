@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// ƒXƒNƒ[ƒ‹ƒo[‚ÌƒtƒF[ƒh§Œä
+/// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ãƒ•ã‚§ãƒ¼ãƒ‰åˆ¶å¾¡
 /// </summary>
 public class ScrollBarFader : MonoBehaviour
 {
@@ -34,16 +34,16 @@ public class ScrollBarFader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // ScrollRectæ“¾
+        // ScrollRectå–å¾—
         scrollRect_ = this.GetComponent<ScrollRect>();
-        // cƒXƒNƒ[ƒ‹æ“¾
+        // ç¸¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å–å¾—
         if (scrollRect_.vertical && scrollRect_.verticalScrollbar != null)
         {
             verticalCanvasGroup_ = scrollRect_.GetComponent<CanvasGroup>();
             if (verticalCanvasGroup_ == null) { verticalCanvasGroup_ = scrollRect_.verticalScrollbar.gameObject.AddComponent<CanvasGroup>(); }
             verticalCanvasGroup_.alpha = 0.0f;
         }
-        // ‰¡ƒXƒNƒ[ƒ‹æ“¾
+        // æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å–å¾—
         if (scrollRect_.horizontal && scrollRect_.horizontalScrollbar != null)
         {
             horizontalCanvasGroup_ = scrollRect_.GetComponent<CanvasGroup>();
@@ -55,25 +55,25 @@ public class ScrollBarFader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // cƒXƒNƒ[ƒ‹ƒo[‚ÌƒtƒF[ƒh
+        // ç¸¦ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ãƒ•ã‚§ãƒ¼ãƒ‰
         if (verticalCanvasGroup_ != null)
         {
             if (verticalState_ == BarState.Hide)
             {
-                // ”ñ•\¦’†
+                // éè¡¨ç¤ºä¸­
                 float diff = scrollRect_.verticalNormalizedPosition - prevVerticalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
                     if (fadeInTime != 0.0f)
                     {
-                        // ƒtƒF[ƒhƒCƒ“
+                        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
                         verticalState_ = BarState.FadeIn;
                         verticalFadeTime_ = fadeInTime * verticalCanvasGroup_.alpha;
                         verticalCanvasGroup_.alpha = verticalFadeTime_ / fadeInTime;
                     }
                     else
                     {
-                        // •\¦
+                        // è¡¨ç¤º
                         verticalState_ = BarState.View;
                         verticalCanvasGroup_.alpha = 1.0f;
                         verticalLimitTime_ = viewTime;
@@ -82,7 +82,7 @@ public class ScrollBarFader : MonoBehaviour
             }
             else if (verticalState_ == BarState.View)
             {
-                // •\¦’†
+                // è¡¨ç¤ºä¸­
                 float diff = scrollRect_.verticalNormalizedPosition - prevVerticalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
@@ -93,7 +93,7 @@ public class ScrollBarFader : MonoBehaviour
                     verticalLimitTime_ -= Time.deltaTime;
                     if (verticalLimitTime_ <= 0.0f)
                     {
-                        // ƒtƒF[ƒhƒAƒEƒg
+                        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
                         verticalLimitTime_ = 0.0f;
                         verticalState_ = BarState.FadeOut;
                         verticalFadeTime_ = fadeOutTime * (1.0f - verticalCanvasGroup_.alpha);
@@ -103,12 +103,12 @@ public class ScrollBarFader : MonoBehaviour
             }
             else if (verticalState_ == BarState.FadeIn)
             {
-                // ƒtƒF[ƒhƒCƒ“’†
+                // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ä¸­
                 verticalFadeTime_ += Time.deltaTime;
                 verticalCanvasGroup_.alpha = Mathf.Min((verticalFadeTime_ / fadeInTime), 1.0f);
                 if (verticalCanvasGroup_.alpha == 1.0f)
                 {
-                    // •\¦
+                    // è¡¨ç¤º
                     verticalState_ = BarState.View;
                     verticalFadeTime_ = 0.0f;
                     verticalLimitTime_ = viewTime;
@@ -116,11 +116,11 @@ public class ScrollBarFader : MonoBehaviour
             }
             else
             {
-                // ƒtƒF[ƒhƒAƒEƒg’†
+                // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­
                 float diff = scrollRect_.verticalNormalizedPosition - prevVerticalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
-                    // ƒtƒF[ƒhƒCƒ“
+                    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
                     verticalState_ = BarState.FadeIn;
                     verticalFadeTime_ = fadeInTime * verticalCanvasGroup_.alpha;
                     verticalCanvasGroup_.alpha = verticalFadeTime_ / fadeInTime;
@@ -131,7 +131,7 @@ public class ScrollBarFader : MonoBehaviour
                     verticalCanvasGroup_.alpha = Mathf.Max((1.0f - verticalFadeTime_ / fadeOutTime), 0.0f);
                     if (verticalCanvasGroup_.alpha == 1.0f)
                     {
-                        // ”ñ•\¦
+                        // éè¡¨ç¤º
                         verticalState_ = BarState.Hide;
                         verticalFadeTime_ = 0.0f;
                     }
@@ -141,25 +141,25 @@ public class ScrollBarFader : MonoBehaviour
             prevVerticalNormPos_ = scrollRect_.verticalNormalizedPosition;
         }
 
-        // ‰¡ƒXƒNƒ[ƒ‹ƒo[‚ÌƒtƒF[ƒh
+        // æ¨ªã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ãƒ•ã‚§ãƒ¼ãƒ‰
         if (horizontalCanvasGroup_ != null)
         {
             if (horizontalState_ == BarState.Hide)
             {
-                // ”ñ•\¦’†
+                // éè¡¨ç¤ºä¸­
                 float diff = scrollRect_.horizontalNormalizedPosition - prevHorizontalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
                     if (fadeInTime != 0.0f)
                     {
-                        // ƒtƒF[ƒhƒCƒ“
+                        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
                         horizontalState_ = BarState.FadeIn;
                         horizontalFadeTime_ = fadeInTime * horizontalCanvasGroup_.alpha;
                         horizontalCanvasGroup_.alpha = horizontalFadeTime_ / fadeInTime;
                     }
                     else
                     {
-                        // •\¦
+                        // è¡¨ç¤º
                         horizontalState_ = BarState.View;
                         horizontalCanvasGroup_.alpha = 1.0f;
                         horizontalLimitTime_ = viewTime;
@@ -168,7 +168,7 @@ public class ScrollBarFader : MonoBehaviour
             }
             else if (horizontalState_ == BarState.View)
             {
-                // •\¦’†
+                // è¡¨ç¤ºä¸­
                 float diff = scrollRect_.horizontalNormalizedPosition - prevHorizontalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
@@ -179,7 +179,7 @@ public class ScrollBarFader : MonoBehaviour
                     horizontalLimitTime_ -= Time.deltaTime;
                     if (horizontalLimitTime_ <= 0.0f)
                     {
-                        // ƒtƒF[ƒhƒAƒEƒg
+                        // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
                         horizontalLimitTime_ = 0.0f;
                         horizontalState_ = BarState.FadeOut;
                         horizontalFadeTime_ = fadeOutTime * (1.0f - horizontalCanvasGroup_.alpha);
@@ -189,12 +189,12 @@ public class ScrollBarFader : MonoBehaviour
             }
             else if (horizontalState_ == BarState.FadeIn)
             {
-                // ƒtƒF[ƒhƒCƒ“’†
+                // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ä¸­
                 horizontalFadeTime_ += Time.deltaTime;
                 horizontalCanvasGroup_.alpha = Mathf.Min((horizontalFadeTime_ / fadeInTime), 1.0f);
                 if (horizontalCanvasGroup_.alpha == 1.0f)
                 {
-                    // •\¦
+                    // è¡¨ç¤º
                     horizontalState_ = BarState.View;
                     horizontalFadeTime_ = 0.0f;
                     horizontalLimitTime_ = viewTime;
@@ -202,11 +202,11 @@ public class ScrollBarFader : MonoBehaviour
             }
             else
             {
-                // ƒtƒF[ƒhƒAƒEƒg’†
+                // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆä¸­
                 float diff = scrollRect_.horizontalNormalizedPosition - prevHorizontalNormPos_;
                 if (Mathf.Abs(diff) >= scrollValue)
                 {
-                    // ƒtƒF[ƒhƒCƒ“
+                    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
                     horizontalState_ = BarState.FadeIn;
                     horizontalFadeTime_ = fadeInTime * horizontalCanvasGroup_.alpha;
                     horizontalCanvasGroup_.alpha = horizontalFadeTime_ / fadeInTime;
@@ -217,7 +217,7 @@ public class ScrollBarFader : MonoBehaviour
                     horizontalCanvasGroup_.alpha = Mathf.Max((1.0f - horizontalFadeTime_ / fadeOutTime), 0.0f);
                     if (horizontalCanvasGroup_.alpha == 1.0f)
                     {
-                        // ”ñ•\¦
+                        // éè¡¨ç¤º
                         horizontalState_ = BarState.Hide;
                         horizontalFadeTime_ = 0.0f;
                     }

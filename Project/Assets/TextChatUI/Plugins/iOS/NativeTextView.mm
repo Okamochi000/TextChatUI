@@ -1,4 +1,4 @@
-@interface KeyboardNotification: NSObject
+﻿@interface KeyboardNotification: NSObject
 @property float height;
 @property bool isShow;
 -(void)setup;
